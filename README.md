@@ -17,7 +17,7 @@
 					<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
 					<resources>
 						<resource>
-							<directory>${basedir}/angular-client/dist</directory>
+							<directory>${basedir}/web/dist</directory>
 						</resource>
 					</resources>
 				</configuration>
