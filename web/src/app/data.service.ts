@@ -20,9 +20,14 @@ export class DataService {
     .catch(this.handleError);
   }
 
+  getCustomer(id: number): Promise<Customer> {
+    const url = `${this.customersUrl}/${id}`;
+    return this.http.get(url).toPromise().then(response => response.json() as Customer).catch(this.handleError);
+  }
+
   private handleError (error: any): Promise<any> {
     console.error('Error',error);
     return Promise.reject(error.message || error);
   }
-
+  
 }
