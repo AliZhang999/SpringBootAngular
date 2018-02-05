@@ -1,15 +1,17 @@
 <div *ngIf="customer">
-  <h4>{{customer.firstName}} details ! </h4>
-  <div>
-    <label>Id:</label>{{customer.id}}
-  </div>
-  <div>
-    <label>FirstName:</label>{{customer.firstname}}
-  </div>
-  <div>
-    <label>LastName:</label>{{customer.lastname}}
-  </div>
-  <div>
-    <label>Age:</label>{{customer.age}}
-  </div>
+	<h4>{{customer.firstname}} details!</h4>
+	<div>
+		<label>id: </label>{{customer.id}}
+	</div>
+	<div>
+		<label>First Name: </label>{{customer.firstname}}
+	</div>
+	<div>
+		<label>Last Name: </label>{{customer.lastname}}
+	</div>
+	<div>
+		<label>Age: </label>{{customer.age}}
+	</div>
 </div>
+
+<button (click)="goBack()">Back</button>

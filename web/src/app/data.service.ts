@@ -2,32 +2,34 @@ import { Injectable } from '@angular/core';
 import { Customer } from './domain/customer';
 import { CUSTOMERS } from './mock-customers';
 import { Http,Response } from '@angular/http';
+import { ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DataService {
 
-  private customersUrl: string = 'api/customer';
+  private customersUrl = 'api/customer';  // URL to web API
 
   constructor(private http: Http) { }
 
+  // Get all customers
   getCustomers(): Promise<Customer[]> {
-    // 由原来的从mock-customers.ts中取数据，改为通过http到后端springboot项目中取数据
-    // return Promise.resolve(CUSTOMERS);
     return this.http.get(this.customersUrl)
-    .toPromise()
-    .then(response => response.json() as Customer[])
-    .catch(this.handleError);
+      .toPromise()
+      .then(response => response.json() as Customer[])
+      .catch(this.handleError);
   }
 
   getCustomer(id: number): Promise<Customer> {
     const url = `${this.customersUrl}/${id}`;
-    return this.http.get(url).toPromise().then(response => response.json() as Customer).catch(this.handleError);
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Customer)
+      .catch(this.handleError);
   }
 
-  private handleError (error: any): Promise<any> {
-    console.error('Error',error);
+  private handleError(error: any): Promise<any> {
+    console.error('Error', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-  
 }
